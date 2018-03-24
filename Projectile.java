@@ -1,13 +1,15 @@
 package wizard_wars;
 
+public abstract class Projectile {
 	private int damage;
 	private int speed;
-  private int areaOfEffect;	
-
-	public Projectiles(int damage, int speed, int aoe) {
+	private int areaOfEffect;	
+	public Element element;
+	
+	public Projectile(int damage, int speed, int aoe) {
 		this.damage = damage;
 		this.speed = speed;
-    this.areaOfEffect = aoe;
+		this.areaOfEffect = aoe;
 	}
 	
 	public void setDamage(int damage) {
@@ -18,11 +20,11 @@ package wizard_wars;
 		return damage;
 	}
 
-  public void setSpeed(int speed){
-    this.speed = speed;
-  }
-  
-  public int getSpeed(){
-    
-  }
+	public void setSpeed(int speed){
+	    this.speed = speed;
+	}
+	public int getSpeed(){
+		return speed;
+	}
 }
+
