@@ -13,9 +13,5 @@ public class StormWizard extends Wizard {
 	super(100, Element.STORM, name);
     }
 
-    @Override
-    public Spell castSuper() {
-	// TODO Auto-generated method stub
-	return null;
-    }
+ 
 }

@@ -14,8 +14,5 @@ public class WaterWizard extends Wizard {
 	super(120, Element.WATER, name);
     }
 
-    @Override
-    public Spell castSuper() {
-	return new Super(5,5,100,Element.WATER);
-    }
+  
 }

@@ -5,8 +5,8 @@ public class Attack extends Spell {
     private int speed;
     private int areaOfEffect;
 
-    public Attack(int damage, int speed, int aoe, Element element, String name) {
-	super(element, true, name);
+    public Attack(int damage, int speed, int aoe, Element element, String name, int cost) {
+	super(element, true, name, cost);
 	this.damage = damage;
 	this.speed = speed;
 	this.areaOfEffect = aoe;

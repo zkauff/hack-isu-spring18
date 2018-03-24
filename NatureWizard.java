@@ -13,10 +13,6 @@ public class NatureWizard extends Wizard {
 	super(175, Element.NATURE, name);
     }
 
-    @Override
-    public Spell castSuper() {
-	// TODO Auto-generated method stub
-	return null;
-    }
+ 
 
 }

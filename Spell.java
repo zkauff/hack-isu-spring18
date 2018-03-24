@@ -3,8 +3,8 @@ package wizard_wars;
 public abstract class Spell {
     public boolean isHarmful;
     public Element element;
-
-    public Spell(Element element, boolean isHarmful, String name) {
+    public int manaCost;
+    public Spell(Element element, boolean isHarmful, String name, int manaCost) {
 	this.element = element;
 	this.isHarmful = isHarmful;
     }

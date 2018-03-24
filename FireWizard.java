@@ -10,11 +10,7 @@ public class FireWizard extends Wizard{
 	super(75, Element.FIRE, name);
     }
 
-    @Override
-    public Spell castSuper() {
-	// TODO Auto-generated method stub
-	return new Super(50,50,50, Element.FIRE);
-    }
+   
     
   
   
