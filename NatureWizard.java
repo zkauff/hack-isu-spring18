@@ -9,12 +9,12 @@ package wizard_wars;
  */
 public class NatureWizard extends Wizard {
 
-    public NatureWizard() {
-	super(175, Element.NATURE);
+    public NatureWizard(String name) {
+	super(175, Element.NATURE, name);
     }
 
     @Override
-    public Attack castSuper() {
+    public Spell castSuper() {
 	// TODO Auto-generated method stub
 	return null;
     }

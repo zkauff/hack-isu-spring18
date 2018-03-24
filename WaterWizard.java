@@ -10,12 +10,12 @@ package wizard_wars;
  */
 public class WaterWizard extends Wizard {
     
-    public WaterWizard() {
-	super(120, Element.WATER);
+    public WaterWizard(String name) {
+	super(120, Element.WATER, name);
     }
 
     @Override
-    public Attack castSuper() {
+    public Spell castSuper() {
 	return new Super(5,5,100,Element.WATER);
     }
 }

@@ -6,12 +6,12 @@ package wizard_wars;
  */
 public class FireWizard extends Wizard{
     
-    public FireWizard() {
-	super(75, Element.FIRE);
+    public FireWizard(String name) {
+	super(75, Element.FIRE, name);
     }
 
     @Override
-    public Attack castSuper() {
+    public Spell castSuper() {
 	// TODO Auto-generated method stub
 	return new Super(50,50,50, Element.FIRE);
     }

@@ -9,12 +9,12 @@ package wizard_wars;
  */
 public class StormWizard extends Wizard {
     
-    public StormWizard() {
-	super(100, Element.STORM);
+    public StormWizard(String name) {
+	super(100, Element.STORM, name);
     }
 
     @Override
-    public Attack castSuper() {
+    public Spell castSuper() {
 	// TODO Auto-generated method stub
 	return null;
     }

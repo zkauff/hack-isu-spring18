@@ -1,8 +1,9 @@
 package wizard_wars;
 
 public class DeathWizard extends Wizard {
-    public DeathWizard() {
-	super(55, Element.DEATH);
+    
+    public DeathWizard(String name) {
+	super(55, Element.DEATH, name);
     }
 
     @Override
