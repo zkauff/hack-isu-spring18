@@ -11,7 +11,7 @@ public class FireWizard extends Wizard{
     }
 
     @Override
-    public Projectile castSuper() {
+    public Attack castSuper() {
 	// TODO Auto-generated method stub
 	return new Super(50,50,50, Element.FIRE);
     }

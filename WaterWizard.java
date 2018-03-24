@@ -15,7 +15,7 @@ public class WaterWizard extends Wizard {
     }
 
     @Override
-    public Projectile castSuper() {
+    public Attack castSuper() {
 	return new Super(5,5,100,Element.WATER);
     }
 }

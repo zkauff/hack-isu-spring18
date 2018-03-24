@@ -14,7 +14,7 @@ public class StormWizard extends Wizard {
     }
 
     @Override
-    public Projectile castSuper() {
+    public Attack castSuper() {
 	// TODO Auto-generated method stub
 	return null;
     }

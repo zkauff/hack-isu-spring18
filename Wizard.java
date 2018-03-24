@@ -3,7 +3,7 @@ package wizard_wars;
 import java.util.ArrayList;
 
 public abstract class Wizard {
-
+    
     public int maxHP;
     public int curHP;
     public int superMeter;
@@ -14,12 +14,13 @@ public abstract class Wizard {
     // every attack has an element, and each wizard can use any spell they wish.
     // Before casting a spell, the damage said spell will do is calclated by
     // checking the boosted list.
-    protected ArrayList<Projectile> fireAttacks;
-    protected ArrayList<Projectile> waterAttacks;
-    protected ArrayList<Projectile> stormAttacks;
-    protected ArrayList<Projectile> natureAttacks;
+    protected ArrayList<Attack> fireAttacks;
+    protected ArrayList<Attack> waterAttacks;
+    protected ArrayList<Attack> stormAttacks;
+    protected ArrayList<Attack> natureAttacks;
+    protected ArrayList<Attack> deathAttacks;
     // references the attacklist of the element this wizard has boosted
-    protected ArrayList<Projectile> boosted;
+    protected ArrayList<Attack> boosted;
 
     public Wizard(int hp, Element element) {
 	this.maxHP = hp;
@@ -43,17 +44,21 @@ public abstract class Wizard {
 	    this.boosted = natureAttacks;
 	    damageBoost = 10;
 	    break;
+	case DEATH:
+	    this.boosted = deathAttacks;
+	    damageBoost = 10;
+	    break;
 	}
 
     }
 
-    public Projectile castSpell(Projectile projectile) {
+    public Attack castSpell(Attack projectile) {
 	if (boosted.contains(projectile)) {
 	    projectile.setDamage(projectile.getDamage() + 10);
 	}
 	return null;
     }
     
-    public abstract Projectile castSuper();
+    public abstract Attack castSuper();
 
 }
