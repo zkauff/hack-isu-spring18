@@ -15,4 +15,7 @@ public class FireWizard extends Wizard{
 	// TODO Auto-generated method stub
 	return new Super(50,50,50, Element.FIRE);
     }
+    
+  
+  
 }

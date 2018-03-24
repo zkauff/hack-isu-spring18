@@ -4,7 +4,7 @@ public abstract class Spell {
     public boolean isHarmful;
     public Element element;
 
-    public Spell(Element element, boolean isHarmful) {
+    public Spell(Element element, boolean isHarmful, String name) {
 	this.element = element;
 	this.isHarmful = isHarmful;
     }
