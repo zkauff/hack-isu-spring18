@@ -1,4 +1,3 @@
-package wizard_wars;
 
 /**
  * Water wizards have boosted HP and can deal more AOE damage. Their special

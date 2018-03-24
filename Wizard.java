@@ -1,4 +1,3 @@
-package wizard_wars;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package wizard_wars;
+
 
 public class StatBooster extends UtilitySpell{
     //if true, attack gets boosted, otherwise defense

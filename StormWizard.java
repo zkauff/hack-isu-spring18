@@ -1,4 +1,3 @@
-package wizard_wars;
 
 /**
  * Storm wizards have normal HP and deal basic damage. They can use ice,

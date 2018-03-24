@@ -1,5 +1,3 @@
-package wizard_wars;
-
 public abstract class UtilitySpell extends Spell{
 
     public UtilitySpell(Element element, boolean isHarmful, String name, int cost) {

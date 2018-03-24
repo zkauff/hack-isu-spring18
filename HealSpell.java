@@ -1,4 +1,4 @@
-package wizard_wars;
+
 
 public class HealSpell extends UtilitySpell {
     

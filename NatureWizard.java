@@ -1,4 +1,4 @@
-package wizard_wars;
+
 
 /**
  * Earth wizards deal more AOE damage and have boosted health. Individual damage

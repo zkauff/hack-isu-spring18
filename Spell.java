@@ -1,4 +1,3 @@
-package wizard_wars;
 
 public abstract class Spell {
     public boolean isHarmful;

@@ -1,4 +1,4 @@
-package wizard_wars;
+
 
 /**
  * Necromancers with very little health but the ability to deal insane damage

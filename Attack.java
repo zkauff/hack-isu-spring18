@@ -1,4 +1,4 @@
-package wizard_wars;
+
 
 public class Attack extends Spell {
     private int damage;

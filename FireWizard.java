@@ -1,4 +1,4 @@
-package wizard_wars;
+
 
 /**
  * Fire wizards have boosted fire attacks and a special firebomb attack. They
