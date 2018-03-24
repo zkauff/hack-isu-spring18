@@ -1,62 +1,31 @@
-import java.awt.BorderLayout;
+package wizards.main;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
-public class Window {
+public class Window extends Canvas{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1417457018811814213L;
 	
-	private JFrame frame;
-	private BufferedImage image;
-	private BufferStrategy bs;
-	private Canvas canvas;
-	private Graphics g;
-	
-	public Window(GameMain gm) {
+	public Window(int width, int height, String title, Game game) {
 		
-		image = new BufferedImage(gm.getWidth(),gm.getHeight(),BufferedImage.TYPE_INT_RGB);
-		canvas = new Canvas();
-		Dimension s = new Dimension((int)(gm.getWidth()*gm.getScale()), (int)(gm.getHeight()*gm.getScale()));
-		canvas.setPreferredSize(s);
-		canvas.setMaximumSize(s);
-		canvas.setMinimumSize(s);
+		JFrame frame = new JFrame(title);
+		frame.setPreferredSize(new Dimension(width,height));
+		frame.setMaximumSize(new Dimension(width,height));
+		frame.setMinimumSize(new Dimension(width,height));
 		
-		frame = new JFrame(gm.getTitle());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new BorderLayout());
-		frame.add(canvas, BorderLayout.CENTER);
-		frame.pack();
-		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.add(game);
 		frame.setVisible(true);
-		
-		canvas.createBufferStrategy(2);
-		bs = canvas.getBufferStrategy();
-		g = bs.getDrawGraphics();
+		game.start();
 	}
-	
-	public void update() {
-		
-		g.drawImage(image,0,0,canvas.getWidth(),canvas.getHeight(), null);
-		bs.show();
-		
-	}
-
-	public BufferedImage getImage() {
-		return image;
-	}
-
-	public Canvas getCanvas() {
-		return canvas;
-	}
-
-	public JFrame getFrame() {
-		return frame;
-	}
-	
 	
 
 }
