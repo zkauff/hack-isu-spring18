@@ -5,8 +5,14 @@ package wizard_wars;
  *
  */
 public class FireWizard extends Wizard{
-
+    
     public FireWizard() {
-	super(75, Element.FIRE);	
+	super(75, Element.FIRE);
+    }
+
+    @Override
+    public Projectile castSuper() {
+	// TODO Auto-generated method stub
+	return new Super(50,50,50, Element.FIRE);
     }
 }
