@@ -14,10 +14,12 @@ public class Game extends Canvas implements Runnable{
 	public final int WIDTH = 1280, HEIGHT = WIDTH/12*9;
 	private Thread thread;
 	private boolean running = false;
+	private Handler handler;
 	
 	public Game() {
 		new Window(WIDTH, HEIGHT, "Wizards Wonds", this);
-		
+		handler = new Handler();
+		handler.addObject(new Player(100,100));
 	}
 	
 	@Override
@@ -56,7 +58,7 @@ public class Game extends Canvas implements Runnable{
 	
 	private void tick() {
 		
-		
+		handler.tick();
 	}
 	
 	private void render() {
@@ -73,6 +75,7 @@ public class Game extends Canvas implements Runnable{
 		//g.setColor(Color.WHITE);
 		//g.fillRect(100, 300, 50, 100);
 		
+		handler.render(g);
 		g.dispose();
 		bs.show();
 		
