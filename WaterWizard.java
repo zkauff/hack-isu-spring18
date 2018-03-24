@@ -14,5 +14,11 @@ public class WaterWizard extends Wizard {
 	super(120, Element.WATER, name);
     }
 
+    @Override
+    public void passiveAbility() {
+	// TODO Auto-generated method stub
+	
+    }
+
   
 }

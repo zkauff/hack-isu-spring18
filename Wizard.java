@@ -2,7 +2,7 @@ package wizard_wars;
 
 import java.util.ArrayList;
 
-public abstract class Wizard {
+public abstract class Wizard extends Entity {
     public String name;
     public int maxHP;
     public int curHP;
@@ -54,9 +54,9 @@ public abstract class Wizard {
 	}
 
     }
-    
+
     public abstract void passiveAbility();
-    
+
     public Attack castSpell(Spell spell) {
 	if (boosted.contains(spell) && spell.isHarmful) {
 	    Attack attack = (Attack) spell;
@@ -68,7 +68,7 @@ public abstract class Wizard {
 	    return new Attack(0, 0, 0, this.element, "", 5);
 	}
     }
-    
+
     private void initSpells() {
 	// tier 1 spells. fast yet weak
 	Attack ember = new Attack(10, 90, 10, Element.FIRE, "Ember", 10);
