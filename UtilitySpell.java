@@ -1,6 +1,6 @@
 package wizard_wars;
 
-public class UtilitySpell extends Spell{
+public abstract class UtilitySpell extends Spell{
 
     public UtilitySpell(Element element, boolean isHarmful, String name, int cost) {
 	super(element, isHarmful, name, cost);
@@ -28,4 +28,6 @@ public class UtilitySpell extends Spell{
 	    opponent.curHP -= (int) opponent.curHP * .2;
 	}
     }
+    
+    public abstract void cast(Wizard player);
 }

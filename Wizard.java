@@ -10,6 +10,12 @@ public abstract class Wizard {
     public int curMana;
     public Element element;
     public StatusEffect status = StatusEffect.NONE;
+    // the amount of extra HP the wizard gains from a shield/defense boost
+    protected int defUp;
+    // the amount of extra attack damage the wizard gains from an attack boost (on
+    // top of damageBoost)
+    protected int atkUp;
+
     public Wizard[] opponents;
     // every attack gets boosted by a set amount of damage if the Element of the
     // spell matches the Element of the wizard casting it
@@ -56,8 +62,8 @@ public abstract class Wizard {
 	    return attack;
 	} else {
 	    UtilitySpell util = (UtilitySpell) spell;
-	    util.effect(this, opponents[0]); //give player the choice, set opponents accordingly
-	    return new Attack(0,0,0,this.element, "", 5);
+	    util.effect(this, opponents[0]); // give player the choice, set opponents accordingly
+	    return new Attack(0, 0, 0, this.element, "", 5);
 	}
     }
 
@@ -68,17 +74,22 @@ public abstract class Wizard {
 	Attack spark = new Attack(10, 90, 10, Element.STORM, "Spark", 10);
 	Attack leafMissile = new Attack(10, 90, 10, Element.NATURE, "Leaf Missile", 10);
 	Attack boneSpike = new Attack(10, 90, 10, Element.DEATH, "Bone spike", 10);
+	HealSpell mendWounds = new HealSpell(20, Element.NATURE, "Mend Wounds", 5);
+	ShieldSpell deflect = new ShieldSpell(Element.WATER, "Deflect", 5);
 	common.add(ember);
 	common.add(squirt);
 	common.add(spark);
 	common.add(leafMissile);
 	common.add(boneSpike);
+	common.add(mendWounds);
+	common.add(deflect);
 	switch (this.element) {
 	case FIRE:
 	    boosted.add(ember);
 	    boosted.add(new Attack(25, 80, 10, Element.FIRE, "Sear shot", 25));
 	    boosted.add(new Attack(50, 50, 20, Element.FIRE, "Magma lob", 50));
 	    boosted.add(new Attack(75, 25, 40, Element.FIRE, "ERUPTION", 150));
+	    boosted.add(new StatBooster(true, Element.FIRE, "Stoke the flames", 50));
 	    break;
 
 	case WATER:
@@ -87,12 +98,14 @@ public abstract class Wizard {
 	    boosted.add(new Attack(25, 65, 30, Element.WATER, "Puddle", 25));
 	    boosted.add(new Attack(50, 90, 15, Element.WATER, "Torpedo", 60));
 	    boosted.add(new Attack(75, 40, 15, Element.WATER, "POSEIDON'S WRATH", 150));
+	    boosted.add(new StatBooster(false, Element.WATER, "Water shield", 0));
 	    break;
 	case STORM:
 	    boosted.add(spark);
 	    boosted.add(new Attack(25, 80, 5, Element.STORM, "Bolt shot", 25));
 	    boosted.add(new Attack(50, 50, 15, Element.STORM, "Ice gust", 55));
 	    boosted.add(new Attack(80, 30, 50, Element.STORM, "STORM CLOUD", 150));
+	    boosted.add(new StatBooster(false, Element.STORM, "Storm Shield", 50));
 	    break;
 
 	case NATURE:
@@ -101,6 +114,8 @@ public abstract class Wizard {
 	    // giant root comes up in an arc
 	    boosted.add(new Attack(65, 50, 25, Element.NATURE, "Unstable overgrowth", 55));
 	    boosted.add(new Attack(70, 40, 30, Element.NATURE, "NATURE'S WRATH", 150));
+	    boosted.add(new HealSpell(25, Element.NATURE, "Nature's Blessing", 50));
+	    boosted.add(new StatBooster(false, Element.NATURE, "Strong as an oak", 50));
 	    break;
 
 	case DEATH:
@@ -110,6 +125,7 @@ public abstract class Wizard {
 	    // zombies/skeletons rush out from the death wizard, dealing massive damage to
 	    // everything in the way
 	    boosted.add(new Attack(75, 75, 50, Element.DEATH, "ADVANCE OF THE UNDEAD", 150));
+	    boosted.add(new StatBooster(true, Element.DEATH, "Unholy Pact", 0));
 	    break;
 
 	}
