@@ -1,12 +1,12 @@
 package wizard_wars;
 
-public abstract class Attack {
+public class Attack extends Spell{
 	private int damage;
 	private int speed;
 	private int areaOfEffect;	
-	public Element element;
 	
 	public Attack(int damage, int speed, int aoe, Element element) {
+		super(element, true);
 		this.damage = damage;
 		this.speed = speed;
 		this.areaOfEffect = aoe;
