@@ -54,7 +54,9 @@ public abstract class Wizard {
 	}
 
     }
-
+    
+    public abstract void passiveAbility();
+    
     public Attack castSpell(Spell spell) {
 	if (boosted.contains(spell) && spell.isHarmful) {
 	    Attack attack = (Attack) spell;
@@ -62,11 +64,11 @@ public abstract class Wizard {
 	    return attack;
 	} else {
 	    UtilitySpell util = (UtilitySpell) spell;
-	    util.effect(this, opponents[0]); // give player the choice, set opponents accordingly
+	    util.cast(this); // give player the choice, set opponents accordingly
 	    return new Attack(0, 0, 0, this.element, "", 5);
 	}
     }
-
+    
     private void initSpells() {
 	// tier 1 spells. fast yet weak
 	Attack ember = new Attack(10, 90, 10, Element.FIRE, "Ember", 10);

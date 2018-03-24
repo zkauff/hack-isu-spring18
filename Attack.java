@@ -31,5 +31,9 @@ public class Attack extends Spell {
     public int getAOE() {
 	return areaOfEffect;
     }
+    
+    public void setAOE(int aoe) {
+	areaOfEffect = aoe;
+    }
 
 }

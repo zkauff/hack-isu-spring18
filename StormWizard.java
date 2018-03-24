@@ -8,9 +8,15 @@ package wizard_wars;
  *
  */
 public class StormWizard extends Wizard {
-    
+
     public StormWizard(String name) {
 	super(100, Element.STORM, name);
+    }
+
+    @Override
+    public void passiveAbility() {
+
+	
     }
 
  
