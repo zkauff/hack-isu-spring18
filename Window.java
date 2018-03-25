@@ -7,9 +7,6 @@ import javax.swing.JFrame;
 
 public class Window extends Canvas{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1417457018811814213L;
 	
 	public Window(int width, int height, String title, Game game) {

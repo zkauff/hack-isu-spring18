@@ -3,11 +3,13 @@ package wizards.main;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferStrategy;
 
-public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable, MouseMotionListener {
 
-    private Handler handler;
+    public Handler handler;
     /**
      * 
      */
@@ -15,13 +17,18 @@ public class Game extends Canvas implements Runnable {
     public final int WIDTH = 1280, HEIGHT = WIDTH / 12 * 9;
     private Thread thread;
     private boolean running = false;
-
+    private Wizard player;
+    private int linex1, linex2, liney1, liney2;
+    private double angle;
+    
     public Game() {
 	handler = new Handler();
-	this.addKeyListener(new KeyInput(handler));
+	player = new StormWizard(this, "Player 1", 200, 700, ID.PLAYER_ONE);
+	this.addKeyListener(new KeyInput(this));
+	this.addMouseMotionListener((MouseMotionListener) this);
 	new Window(WIDTH, HEIGHT, "Wizards Wonds", this);
-	handler.addObject(new FireWizard(this, "Player 1", 1030, 700, ID.PLAYER_ONE));
-	handler.addObject(new StormWizard(this, "Player 2", 200, 700, ID.PLAYER_TWO));
+	handler.addObject(new FireWizard(this, "Player 2", 1030, 700, ID.PLAYER_TWO));
+	handler.addObject(player);
     }
 
     @Override
@@ -45,7 +52,6 @@ public class Game extends Canvas implements Runnable {
 		delta--;
 	    }
 	    if (running) {
-		Physics.update(proj, (double)t / 1000.0);
 		render(proj);
 	    }
 	    frames++;
@@ -75,6 +81,8 @@ public class Game extends Canvas implements Runnable {
 
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, WIDTH, HEIGHT);
+	g.setColor(Color.WHITE);
+	g.drawLine(linex1, liney1, linex2, liney2);
 	handler.render(g);
 	g.dispose();
 	bs.show();
@@ -96,10 +104,27 @@ public class Game extends Canvas implements Runnable {
 	}
 
     }
-
+    public double getAngle() {
+	return angle;
+    }
+    
     public static void main(String args[]) {
-
 	new Game();
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+	linex1 = (int) player.values.posX;
+	liney1 = (int) player.values.posY;
+	linex2 = e.getX();
+	liney2 = e.getY();
+	angle = Physics.calculateAngle(linex2, liney2, linex1, liney1);
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
 
     }
 

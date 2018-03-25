@@ -20,9 +20,9 @@ public class Projectile{
 	long time = System.currentTimeMillis();
 	long timePast = 0;
 	while(this.values.posX <= 1280 && this.values.posX >= 0) {
-	    timePast = System.currentTimeMillis() - time;
+	    timePast = (System.currentTimeMillis() - time) / 50;
 	    this.values.posX += this.values.vX * timePast / 1000.0;
-	    this.values.vY -= 9.8 * (timePast / 1000.0)* (timePast / 1000.0);
+	    this.values.vY -= 98 * (timePast / 1000.0)* (timePast / 1000.0);
 	    this.values.posY -= this.values.vY * timePast / 1000.0;
 	    g.setColor(Color.white);
 	    g.fillOval((int)this.values.posX, (int)this.values.posY, 20, 20);
