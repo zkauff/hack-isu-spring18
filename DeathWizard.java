@@ -27,10 +27,6 @@ public class DeathWizard extends Wizard {
 
     }
 
-    @Override
-    public void tick() {
-	// TODO Auto-generated method stub
-	
-    }
+
 
 }

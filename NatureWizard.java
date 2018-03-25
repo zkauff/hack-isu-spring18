@@ -20,7 +20,7 @@ public class NatureWizard extends Wizard {
 	if(this.curHP <= 50) {
 	    for(Spell s : boosted) {
 		if(s.isHarmful) {
-		    Attack e = (Attack) s;
+		    Projectile e = (Projectile) s;
 		    e.setAOE(e.getAOE() + 15);
 		}
 	    }
@@ -28,11 +28,6 @@ public class NatureWizard extends Wizard {
 	
     }
 
-    @Override
-    public void tick() {
-	// TODO Auto-generated method stub
-	
-    }
 
 
  

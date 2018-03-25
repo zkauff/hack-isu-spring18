@@ -3,12 +3,12 @@ package wizards.main;
 public abstract class UtilitySpell extends Spell{
 
     public UtilitySpell(Game game, Element element, boolean isHarmful, String name, int cost) {
-	super(game, element, isHarmful, name, cost);
+	super(game, 0, 0, cost, element);
 	
     }
     
     public void effect(Wizard player, Wizard opponent) {
-	switch(this.element) {
+	switch(super.element) {
 	case FIRE:
 	    //make a fire wall
 	    break;

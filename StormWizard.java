@@ -21,11 +21,7 @@ public class StormWizard extends Wizard {
 	
     }
 
-    @Override
-    public void tick() {
-	// TODO Auto-generated method stub
-	
-    }
+    
 
  
 }

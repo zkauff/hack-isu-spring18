@@ -17,24 +17,27 @@ public class Game extends Canvas implements Runnable, MouseMotionListener {
     public final int WIDTH = 1280, HEIGHT = WIDTH / 12 * 9;
     private Thread thread;
     private boolean running = false;
-    private Wizard player;
+    public Wizard player1;
+    public Wizard player2;
     private int linex1, linex2, liney1, liney2;
     private double angle;
-    
+
     public Game() {
 	handler = new Handler();
-	player = new StormWizard(this, "Player 1", 200, 700, ID.PLAYER_ONE);
+
 	this.addKeyListener(new KeyInput(this));
 	this.addMouseMotionListener((MouseMotionListener) this);
+	player1 = new NatureWizard(this, "Player 1", 200, 700, ID.PLAYER_ONE);
 	new Window(WIDTH, HEIGHT, "Wizards Wonds", this);
-	handler.addObject(new FireWizard(this, "Player 2", 1030, 700, ID.PLAYER_TWO));
-	handler.addObject(player);
+	player2 = new FireWizard(this, "Player 2", 1030, 700, ID.PLAYER_TWO);
+	handler.addObject(player1);
+	handler.addObject(player2);
     }
 
     @Override
     public void run() {
-
-	long lastTime = System.nanoTime();
+	running = true;
+	long lastTime = System.nanoTime() / 1000000000  ;
 	double amountOfTicks = 60.0;
 	double ns = 1000000000 / amountOfTicks;
 	double delta = 0;
@@ -60,6 +63,11 @@ public class Game extends Canvas implements Runnable, MouseMotionListener {
 		timer += 1000;
 		System.out.println("FPS: " + frames);
 		frames = 0;
+	    }
+	    try {
+		Thread.sleep(10);
+	    } catch (InterruptedException e) {
+		
 	    }
 	}
 	stop();
@@ -104,10 +112,11 @@ public class Game extends Canvas implements Runnable, MouseMotionListener {
 	}
 
     }
+
     public double getAngle() {
 	return angle;
     }
-    
+
     public static void main(String args[]) {
 	new Game();
 
@@ -115,8 +124,8 @@ public class Game extends Canvas implements Runnable, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-	linex1 = (int) player.values.posX;
-	liney1 = (int) player.values.posY;
+	linex1 = this.WIDTH / 2;
+	liney1 = this.HEIGHT / 2;
 	linex2 = e.getX();
 	liney2 = e.getY();
 	angle = Physics.calculateAngle(linex2, liney2, linex1, liney1);
@@ -127,5 +136,6 @@ public class Game extends Canvas implements Runnable, MouseMotionListener {
     public void mouseDragged(MouseEvent e) {
 
     }
+
 
 }

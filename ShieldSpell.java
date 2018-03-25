@@ -12,11 +12,6 @@ public class ShieldSpell extends UtilitySpell {
 	player.status = StatusEffect.DEFENSE_UP;
     }
 
-    @Override
-    public void tick() {
-	// TODO Auto-generated method stub
-	
-    }
 
     @Override
     public void render(Graphics g) {

@@ -8,11 +8,12 @@ public abstract class GameObject {
 	public Color color;
 	public ID id;
 	public Game game;
-	
+	protected Element element;
 	public GameObject(Game game, double x, double y, Element element, ID id) {
 		values = new MotionValues(x, y, 0, 0);
 		this.game = game;
 		this.id = id;
+		this.element = element;
 		switch(element) {
 		case FIRE:
 		    this.color = Color.RED;
@@ -30,8 +31,6 @@ public abstract class GameObject {
 		    this.color = Color.BLACK;
 		}
 	}
-	
-	public abstract void tick();
 	
 	public abstract void render(Graphics g);
 

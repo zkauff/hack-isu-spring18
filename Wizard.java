@@ -19,7 +19,6 @@ public abstract class Wizard extends GameObject {
     // top of damageBoost)
     protected int atkUp;
 
-    public Wizard[] opponents;
     // every attack gets boosted by a set amount of damage if the Element of the
     // spell matches the Element of the wizard casting it
     protected int damageBoost;
@@ -64,7 +63,7 @@ public abstract class Wizard extends GameObject {
     public void castSpell(Spell spell, double angle) {
 
 	if (boosted.contains(spell) && spell.isHarmful) {
-	    Attack attack = (Attack) spell;
+	    Projectile attack = (Projectile) spell;
 	    attack.setDamage(attack.getDamage() + 10);
 	    attack.render(game.getGraphics());
 	} else {
@@ -77,11 +76,17 @@ public abstract class Wizard extends GameObject {
 	common = new ArrayList<Spell>();
 	boosted = new ArrayList<Spell>();
 	// tier 1 spells. fast yet weak
-	Attack ember = new Attack(this.game, 10, 90, 10, Element.FIRE, "Ember", 10);
-	Attack squirt = new Attack(this.game, 10, 90, 10, Element.WATER, "Squirt", 10);
-	Attack spark = new Attack(this.game, 10, 90, 10, Element.STORM, "Spark", 10);
-	Attack leafMissile = new Attack(this.game, 10, 90, 10, Element.NATURE, "Leaf Missile", 10);
-	Attack boneSpike = new Attack(this.game, 10, 90, 10, Element.DEATH, "Bone spike", 10);
+
+	Projectile ember = new Projectile(this.game, this, this.getX(), this.getY(), 90, 15, 10, 10, Element.FIRE,
+		"Ember", this.game.getAngle());
+	Projectile squirt = new Projectile(this.game, this, this.getX(), this.getY(), 90, 15, 10, 10, Element.WATER,
+		"Squirt", this.game.getAngle());
+	Projectile spark = new Projectile(this.game, this, this.getX(), this.getY(), 90, 15, 10, 10, Element.STORM,
+		"Spark", this.game.getAngle());
+	Projectile leafMissile = new Projectile(this.game, this, this.getX(), this.getY(), 90, 15, 10, 10,
+		Element.NATURE, "Leaf Missile", this.game.getAngle());
+	Projectile boneSpike = new Projectile(this.game, this, this.getX(), this.getY(), 90, 15, 10, 10, Element.DEATH,
+		"Bone spike", this.game.getAngle());
 	HealSpell mendWounds = new HealSpell(this.game, 20, Element.NATURE, "Mend Wounds", 5);
 	ShieldSpell deflect = new ShieldSpell(this.game, Element.WATER, "Deflect", 5);
 	common.add(ember);
@@ -94,45 +99,59 @@ public abstract class Wizard extends GameObject {
 	switch (this.element) {
 	case FIRE:
 	    boosted.add(ember);
-	    boosted.add(new Attack(this.game, 25, 80, 10, Element.FIRE, "Sear shot", 25));
-	    boosted.add(new Attack(this.game, 50, 50, 20, Element.FIRE, "Magma lob", 50));
-	    boosted.add(new Attack(this.game, 75, 25, 40, Element.FIRE, "ERUPTION", 150));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 80, 25, 10, 25, Element.FIRE,
+		    "Sear shot", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 50, 50, 20, 50, Element.FIRE,
+		    "Magma lob", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 25, 75, 40, 150, Element.FIRE,
+		    "ERUPTION", this.game.getAngle()));
 	    boosted.add(new StatBooster(this.game, true, Element.FIRE, "Stoke the flames", 50));
 	    break;
 
 	case WATER:
 	    // TODO: damage over time for puddle?
 	    boosted.add(squirt);
-	    boosted.add(new Attack(this.game, 25, 65, 30, Element.WATER, "Puddle", 25));
-	    boosted.add(new Attack(this.game, 50, 90, 15, Element.WATER, "Torpedo", 60));
-	    boosted.add(new Attack(this.game, 75, 40, 15, Element.WATER, "POSEIDON'S WRATH", 150));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 60, 25, 30, 25, Element.WATER,
+		    "Puddle", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 90, 50, 15, 60, Element.WATER,
+		    "Torpedo", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 40, 75, 40, 150, Element.WATER,
+		    "Puddle", this.game.getAngle()));
 	    boosted.add(new StatBooster(this.game, false, Element.WATER, "Water shield", 0));
 	    break;
 	case STORM:
 	    boosted.add(spark);
-	    boosted.add(new Attack(this.game, 25, 80, 5, Element.STORM, "Bolt shot", 25));
-	    boosted.add(new Attack(this.game, 50, 50, 15, Element.STORM, "Ice gust", 55));
-	    boosted.add(new Attack(this.game, 80, 30, 50, Element.STORM, "STORM CLOUD", 150));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 80, 25, 30, 25, Element.STORM,
+		    "Bolt shot", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 90, 50, 15, 60, Element.STORM,
+		    "Ice gust", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 30, 75, 100, 150, Element.STORM,
+		    "STORM CLOUD", this.game.getAngle()));
 	    boosted.add(new StatBooster(this.game, false, Element.STORM, "Storm Shield", 50));
 	    break;
 
 	case NATURE:
 	    boosted.add(leafMissile);
-	    boosted.add(new Attack(this.game, 25, 70, 20, Element.NATURE, "Razor Leaves", 25));
-	    // giant root comes up in an arc
-	    boosted.add(new Attack(this.game, 65, 50, 25, Element.NATURE, "Unstable overgrowth", 55));
-	    boosted.add(new Attack(this.game, 70, 40, 30, Element.NATURE, "NATURE'S WRATH", 150));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 80, 25, 30, 25, Element.NATURE,
+		    "Razor Leaves", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 50, 50, 15, 60, Element.NATURE,
+		    "Unstable overgrowth", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 30, 75, 40, 150, Element.NATURE,
+		    "NATURE'S WRATH", this.game.getAngle()));
 	    boosted.add(new HealSpell(this.game, 25, Element.NATURE, "Nature's Blessing", 50));
 	    boosted.add(new StatBooster(this.game, false, Element.NATURE, "Strong as an oak", 50));
 	    break;
 
 	case DEATH:
 	    boosted.add(boneSpike);
-	    boosted.add(new Attack(this.game, 25, 80, 10, Element.DEATH, "Bone Tomahawk", 25));
-	    boosted.add(new Attack(this.game, 50, 60, 30, Element.DEATH, "Corpse Meteor", 55));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 80, 25, 30, 25, Element.DEATH,
+		    "Bone Tomahawk", this.game.getAngle()));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 50, 50, 15, 60, Element.DEATH,
+		    "Corpse Meteor", this.game.getAngle()));
 	    // zombies/skeletons rush out from the death wizard, dealing massive damage to
 	    // everything in the way
-	    boosted.add(new Attack(this.game, 75, 75, 50, Element.DEATH, "ADVANCE OF THE UNDEAD", 150));
+	    boosted.add(new Projectile(this.game, this, this.getX(), this.getY(), 30, 75, 40, 150, Element.DEATH,
+		    "ADVANCE OF THE UNDEAD", this.game.getAngle()));
 	    boosted.add(new StatBooster(this.game, true, Element.DEATH, "Unholy Pact", 0));
 	    break;
 
@@ -166,7 +185,23 @@ public abstract class Wizard extends GameObject {
 	    g.fillRect(1080, 45, 200 * (curMana / maxMana), 20);
 	}
 	g.setColor(this.color);
-	g.fillRect((int)this.values.posX, (int)this.values.posY, 50, 50);
+	g.fillRect((int) this.values.posX, (int) this.values.posY, 50, 50);
+	if (this.element == Element.DEATH) {
+	    g.setColor(Color.WHITE);
+	    g.drawRect((int) this.values.posX, (int) this.values.posY, 50, 50);
+	}
+	if (this.game.player1.curHP < 0) {
+	    g.setColor(Color.WHITE);
+	    int fontSize = 50;
+	    g.setFont(new Font("Helvetica", Font.PLAIN, fontSize));
+	    g.drawString(this.game.player1.name + " died.", 640, 200);
+
+	} else if(this.game.player2.curHP < 0) {
+	    g.setColor(Color.WHITE);
+	    int fontSize = 50;
+	    g.setFont(new Font("Helvetica", Font.PLAIN, fontSize));
+	    g.drawString(this.game.player2.name + " died.", 640, 200);
+	}
     }
 
 }

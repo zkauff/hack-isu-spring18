@@ -2,13 +2,11 @@ package wizards.main;
 
 public abstract class Spell extends GameObject{
     public boolean isHarmful;
-    public Element element;
     public int manaCost;
     
-    public Spell(Game game, Element element, boolean isHarmful, String name, int manaCost) {
-	super(game, 0,0,element,ID.PROJECTILE);
-	this.element = element;
-	this.isHarmful = isHarmful;
+    public Spell(Game game, double x, double y, int cost, Element element) {
+	super(game, x, y, element, ID.PROJECTILE);
+	this.manaCost = cost;
     }
     
     public void setHarm(boolean harmful) {
