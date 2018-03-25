@@ -1,3 +1,4 @@
+package wizards.main;
 
 
 public enum StatusEffect {

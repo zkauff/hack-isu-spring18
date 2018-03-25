@@ -1,3 +1,4 @@
+package wizards.main;
 
 public class Physics {
 
@@ -25,11 +26,11 @@ public class Physics {
 	return angle;
     }
     
-    public static void update(double posX, double posY, double vX, double vY, int time) {
-	final double g = 9.8;
-	vY = vY - g * time;
-	posX = posX + vX;
-	posY = posY + vY;
+    public static void update(MotionValues values, double time) {
+	final double g = 4.98;
+	values.vY -= g * time;
+	values.posX += values.vX;
+	values.posY -= values.vY;
     }
     
     public static boolean collision(double projX, double projY, double projRadius, double hitBoxTopLeftX, double hitBoxTopLeftY, double hitBoxBottomRightX, double hitBoxBottomRightY) {

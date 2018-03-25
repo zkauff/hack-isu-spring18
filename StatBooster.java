@@ -1,4 +1,4 @@
-
+package wizards.main;
 
 public class StatBooster extends UtilitySpell{
     //if true, attack gets boosted, otherwise defense

@@ -1,4 +1,6 @@
+package wizards.main;
 
+import java.awt.Graphics;
 
 /**
  * Earth wizards deal more AOE damage and have boosted health. Individual damage
@@ -9,8 +11,8 @@
  */
 public class NatureWizard extends Wizard {
 
-    public NatureWizard(String name) {
-	super(175, Element.NATURE, name);
+    public NatureWizard(String name, int x, int y) {
+	super(175, Element.NATURE, name, x, y);
     }
 
     @Override
@@ -25,6 +27,13 @@ public class NatureWizard extends Wizard {
 	}
 	
     }
+
+    @Override
+    public void tick() {
+	// TODO Auto-generated method stub
+	
+    }
+
 
  
 

@@ -1,4 +1,6 @@
+package wizards.main;
 
+import java.awt.Graphics;
 
 /**
  * Necromancers with very little health but the ability to deal insane damage
@@ -10,8 +12,8 @@
 public class DeathWizard extends Wizard {
     boolean resurrected = false;
 
-    public DeathWizard(String name) {
-	super(55, Element.DEATH, name);
+    public DeathWizard(String name, int x, int y) {
+	super(55, Element.DEATH, name, x, y);
 	defUp = 5;
 	atkUp = 15;
     }
@@ -23,6 +25,12 @@ public class DeathWizard extends Wizard {
 	    resurrected = true;
 	}
 
+    }
+
+    @Override
+    public void tick() {
+	// TODO Auto-generated method stub
+	
     }
 
 }

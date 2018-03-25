@@ -1,7 +1,9 @@
+package wizards.main;
 
 import java.util.ArrayList;
+import java.awt.Graphics;
 
-public abstract class Wizard extends Entity {
+public abstract class Wizard extends GameObject {
     public String name;
     public int maxHP;
     public int curHP;
@@ -26,7 +28,8 @@ public abstract class Wizard extends Entity {
     protected ArrayList<Spell> boosted;
     protected ArrayList<Spell> common;
 
-    public Wizard(int hp, Element element, String name) {
+    public Wizard(int hp, Element element, String name, int x, int y) {
+	super(x,y, element);
 	this.name = name;
 	this.maxHP = hp;
 	this.curHP = maxHP;
@@ -69,6 +72,8 @@ public abstract class Wizard extends Entity {
     }
 
     private void initSpells() {
+	common = new ArrayList<Spell>();
+	boosted = new ArrayList<Spell>();
 	// tier 1 spells. fast yet weak
 	Attack ember = new Attack(10, 90, 10, Element.FIRE, "Ember", 10);
 	Attack squirt = new Attack(10, 90, 10, Element.WATER, "Squirt", 10);
@@ -130,6 +135,11 @@ public abstract class Wizard extends Entity {
 	    break;
 
 	}
+    }
+    @Override
+    public void render(Graphics g) {
+	g.setColor(this.color);
+	g.drawRect(this.values.posX, this.values.posY, 30, 30);
     }
 
 }

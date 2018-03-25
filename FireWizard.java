@@ -1,4 +1,6 @@
+package wizards.main;
 
+import java.awt.Graphics;
 
 /**
  * Fire wizards have boosted fire attacks and a special firebomb attack. They
@@ -11,8 +13,8 @@
  */
 public class FireWizard extends Wizard {
 
-    public FireWizard(String name) {
-	super(75, Element.FIRE, name);
+    public FireWizard(String name, int x, int y) {
+	super(75, Element.FIRE, name, x, y);
     }
 
     @Override
@@ -21,5 +23,12 @@ public class FireWizard extends Wizard {
 	damageBoost += rage;
 
     }
+
+    @Override
+    public void tick() {
+	// TODO Auto-generated method stub
+	
+    }
+
 
 }

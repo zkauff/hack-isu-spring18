@@ -1,3 +1,6 @@
+package wizards.main;
+
+import java.awt.Graphics;
 
 /**
  * Water wizards have boosted HP and can deal more AOE damage. Their special
@@ -9,12 +12,18 @@
  */
 public class WaterWizard extends Wizard {
     
-    public WaterWizard(String name) {
-	super(120, Element.WATER, name);
+    public WaterWizard(String name, int x, int y) {
+	super(120, Element.WATER, name, x, y);
     }
 
     @Override
     public void passiveAbility() {
+	// TODO Auto-generated method stub
+	
+    }
+
+    @Override
+    public void tick() {
 	// TODO Auto-generated method stub
 	
     }

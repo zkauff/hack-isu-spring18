@@ -1,3 +1,4 @@
+package wizards.main;
 
 public class ShieldSpell extends UtilitySpell {
     public ShieldSpell(Element element, String name, int cost) {

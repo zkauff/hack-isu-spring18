@@ -1,4 +1,4 @@
-
+package wizards.main;
 
 public class HealSpell extends UtilitySpell {
     

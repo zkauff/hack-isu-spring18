@@ -1,3 +1,4 @@
+package wizards.main;
 
 public abstract class Spell {
     public boolean isHarmful;
