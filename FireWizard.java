@@ -13,8 +13,8 @@ import java.awt.Graphics;
  */
 public class FireWizard extends Wizard {
 
-    public FireWizard(String name, int x, int y) {
-	super(75, Element.FIRE, name, x, y);
+    public FireWizard(Game game, String name, int x, int y, ID id) {
+	super(game, 75, Element.FIRE, name, x, y, id);
     }
 
     @Override

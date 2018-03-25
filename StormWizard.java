@@ -11,8 +11,8 @@ import java.awt.Graphics;
  */
 public class StormWizard extends Wizard {
 
-    public StormWizard(String name,  int x, int y) {
-	super(100, Element.STORM, name, x, y);
+    public StormWizard(Game game, String name,  int x, int y, ID id) {
+	super(game, 100, Element.STORM, name, x, y, id);
     }
 
     @Override

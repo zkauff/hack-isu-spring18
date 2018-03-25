@@ -6,9 +6,13 @@ public abstract class GameObject {
 	
 	protected MotionValues values;
 	public Color color;
+	public ID id;
+	public Game game;
 	
-	public GameObject(int x, int y, Element element) {
+	public GameObject(Game game, double x, double y, Element element, ID id) {
 		values = new MotionValues(x, y, 0, 0);
+		this.game = game;
+		this.id = id;
 		switch(element) {
 		case FIRE:
 		    this.color = Color.RED;
@@ -31,7 +35,7 @@ public abstract class GameObject {
 	
 	public abstract void render(Graphics g);
 
-	public int getX() {
+	public double getX() {
 		return values.posX;
 	}
 
@@ -39,7 +43,7 @@ public abstract class GameObject {
 		values.posX = x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return values.posY;
 	}
 

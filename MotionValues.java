@@ -1,14 +1,14 @@
 package wizards.main;
 
 public class MotionValues {
-    int posX;
-    int posY;
+    double posX;
+    double posY;
     double vX;
     double vY;
     
-    public MotionValues(int xx, int xy, double vx, double vy) {
-	this.posX = xx;
-	this.posY = xy;
+    public MotionValues(double x, double y, double vx, double vy) {
+	this.posX = x;
+	this.posY = y;
 	this.vX = vx;
 	this.vY = vy;
     }

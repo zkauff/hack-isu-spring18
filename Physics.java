@@ -25,17 +25,18 @@ public class Physics {
 	}
 	return angle;
     }
-    
+
     public static void update(MotionValues values, double time) {
 	final double g = 4.98;
 	values.vY -= g * time;
 	values.posX += values.vX;
 	values.posY -= values.vY;
     }
-    
-    public static boolean collision(double projX, double projY, double projRadius, double hitBoxTopLeftX, double hitBoxTopLeftY, double hitBoxBottomRightX, double hitBoxBottomRightY) {
-	if(projX + projRadius > hitBoxTopLeftX && projX + projRadius < hitBoxBottomRightX) {
-	    if(projY + projRadius > hitBoxTopLeftY && projY + projRadius < hitBoxBottomRightY) {
+
+    public static boolean collision(double projX, double projY, double projRadius, double hitBoxTopLeftX,
+	    double hitBoxTopLeftY, double hitBoxBottomRightX, double hitBoxBottomRightY) {
+	if (projX + projRadius > hitBoxTopLeftX && projX + projRadius < hitBoxBottomRightX) {
+	    if (projY + projRadius > hitBoxTopLeftY && projY + projRadius < hitBoxBottomRightY) {
 		return true;
 	    } else {
 		return false;

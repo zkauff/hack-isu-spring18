@@ -12,8 +12,8 @@ import java.awt.Graphics;
 public class DeathWizard extends Wizard {
     boolean resurrected = false;
 
-    public DeathWizard(String name, int x, int y) {
-	super(55, Element.DEATH, name, x, y);
+    public DeathWizard(Game game, String name, int x, int y, ID id) {
+	super(game, 55, Element.DEATH, name, x, y, id);
 	defUp = 5;
 	atkUp = 15;
     }

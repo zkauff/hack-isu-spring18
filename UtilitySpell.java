@@ -2,8 +2,8 @@ package wizards.main;
 
 public abstract class UtilitySpell extends Spell{
 
-    public UtilitySpell(Element element, boolean isHarmful, String name, int cost) {
-	super(element, isHarmful, name, cost);
+    public UtilitySpell(Game game, Element element, boolean isHarmful, String name, int cost) {
+	super(game, element, isHarmful, name, cost);
 	
     }
     

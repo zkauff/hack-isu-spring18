@@ -1,11 +1,13 @@
 package wizards.main;
 
+import java.awt.Graphics;
+
 public class StatBooster extends UtilitySpell{
     //if true, attack gets boosted, otherwise defense
     boolean attack;
     //note: the factor by which the stats gets boosted is determined by the type of wizard
-    public StatBooster(boolean atkUP, Element element, String name, int cost) {
-	super(element, false, name, cost);
+    public StatBooster(Game game, boolean atkUP, Element element, String name, int cost) {
+	super(game,element, false, name, cost);
 	attack = atkUP;
     }
 
@@ -22,6 +24,18 @@ public class StatBooster extends UtilitySpell{
 	    player.status = StatusEffect.DEFENSE_UP;
 	    player.curHP += player.defUp;
 	}
+	
+    }
+
+    @Override
+    public void tick() {
+	// TODO Auto-generated method stub
+	
+    }
+
+    @Override
+    public void render(Graphics g) {
+	// TODO Auto-generated method stub
 	
     }
 

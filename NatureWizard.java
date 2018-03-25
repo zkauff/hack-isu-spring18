@@ -11,8 +11,8 @@ import java.awt.Graphics;
  */
 public class NatureWizard extends Wizard {
 
-    public NatureWizard(String name, int x, int y) {
-	super(175, Element.NATURE, name, x, y);
+    public NatureWizard(Game game, String name, int x, int y, ID id) {
+	super(game, 175, Element.NATURE, name, x, y, id);
     }
 
     @Override

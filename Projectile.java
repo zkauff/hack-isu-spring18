@@ -1,35 +1,34 @@
-package wizard_wars;
+package wizards.main;
 
-public abstract class Projectile {
-	private int damage;
-	private int speed;
-	private int areaOfEffect;	
-	public Element element;
-	
-	public Projectile(int damage, int speed, int aoe, Element element) {
-		this.damage = damage;
-		this.speed = speed;
-		this.areaOfEffect = aoe;
-	}
-	
-	public void setDamage(int damage) {
-		this.damage = damage;
-	}
-	
-	public int getDamage() {
-		return damage;
-	}
+import java.awt.Graphics;
+import java.awt.Color;
 
-	public void setSpeed(int speed){
-	    this.speed = speed;
+public class Projectile{
+    int speed;
+    MotionValues values;
+    Game game;
+    public Projectile(Game game, double x, double y, int speed, double angle) {
+	this.game = game;
+	this.speed = speed;
+	values = new MotionValues(x, y, speed * Math.cos(angle), speed * Math.sin(angle));
+	// TODO Auto-generated constructor stub
+    }
+
+
+    public void render(Graphics g) {
+	// TODO Auto-generated method stub
+	long time = System.currentTimeMillis();
+	long timePast = 0;
+	while(this.values.posX <= 1280 && this.values.posX >= 0) {
+	    timePast = System.currentTimeMillis() - time;
+	    this.values.posX += this.values.vX * timePast / 1000.0;
+	    this.values.vY -= 9.8 * (timePast / 1000.0)* (timePast / 1000.0);
+	    this.values.posY -= this.values.vY * timePast / 1000.0;
+	    g.setColor(Color.white);
+	    g.fillOval((int)this.values.posX, (int)this.values.posY, 20, 20);
 	}
 	
-	public int getSpeed() {
-	    return speed;
-	}
-	
-	public int getAOE() {
-	    return areaOfEffect;
-	}
+    }
 
 }
+                                       

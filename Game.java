@@ -17,13 +17,11 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
 
     public Game() {
-	new Window(WIDTH, HEIGHT, "Wizards Wonds", this);
 	handler = new Handler();
-	handler.addObject(new FireWizard("adf", 400, 400));
-	handler.addObject(new DeathWizard("adf", 300, 200));
-	handler.addObject(new StormWizard("adf", 300, 150));
-	handler.addObject(new NatureWizard("adf", 300, 100));
-	handler.addObject(new WaterWizard("adf", 300, 700));
+	this.addKeyListener(new KeyInput(handler));
+	new Window(WIDTH, HEIGHT, "Wizards Wonds", this);
+	handler.addObject(new FireWizard(this, "Player 1", 1030, 700, ID.PLAYER_ONE));
+	handler.addObject(new StormWizard(this, "Player 2", 200, 700, ID.PLAYER_TWO));
     }
 
     @Override
@@ -75,7 +73,7 @@ public class Game extends Canvas implements Runnable {
 
 	Graphics g = bs.getDrawGraphics();
 
-	g.setColor(Color.GRAY);
+	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, WIDTH, HEIGHT);
 	handler.render(g);
 	g.dispose();
